@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+config.py
+test.py
+expiring_users.db
+*.log*
