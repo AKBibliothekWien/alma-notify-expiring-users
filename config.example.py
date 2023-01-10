@@ -1,3 +1,22 @@
+"""
+Notify expiring users from Alma (ExLibris): config file
+Copyright (C) 2023 - AK Bibliothek Wien
+                     (Michael Birkner <michael.birkner@akwien.at>)
+                     
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
+
 config = {
     # The base path to your Alma API
     'api_base_path': 'https://api-na.hosted.exlibrisgroup.com/almaws/v1',
@@ -5,10 +24,12 @@ config = {
     'api_key': 'YOUR_API_KEY_WITH_READ_ACCESS_TO_ANALYTICS_API',
     # Path to an Analytic report with user data. The report should contain at least these fields: First Name, Last Name, Preferred Email, Expiry Date.
     # IMPORTANT: Set an "is prompted" filter on the "Expiry Date" field. Without that, the "filter" below won't work!
-    # Save the report to a subfolder of the "Shared Folder" (probably the one accessible by your institution).
+    # Save the report to a subfolder of the "Shared Folder" (probably the one accessible by your institution). To get the path to the report, open the
+    # saved report from your catalog, inspect the URL in the address field of your browser and find value of the "path" parameter.
     'path': '/shared/My Institution/Reports/users_expiry_date',
     # A filter that gets users with an expiry date that lies N days in the future from today on.
     # See config "days_to_add" where you can set the number of days that should be added to todays date.
+    # You can probably leave this filter as it is.
     'filter': '<sawx:expr xsi:type="sawx:comparison" op="equal" xmlns:sawx="com.siebel.analytics.web/expression/v1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><sawx:expr xsi:type="sawx:sqlExpression">"User Details"."Expiry Date"</sawx:expr><sawx:expr xsi:type="xsd:date">$future_expiry_date</sawx:expr></sawx:expr>',
     # Number of users in the result. Min. 25, max. 1000. Should be divisible by 25 (see also documentation of Alma Analytics API).
     # If there are more users, the result will be paged through with a resumption token so that all users will be received.

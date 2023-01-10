@@ -7,8 +7,9 @@ This Python script is intended to work with Alma (ExLibris) to notify users that
 - (Linux) Server - not tested on Windows!
 - Python 3.6 or higher
 - Mail Transfer Agent (e. g. Postfix)
-  > **Warning**
+  > **Warning**\
   > Make sure your server is configured properly for sending e-mails. Otherwise, the notifications could be treated as spam.
+- Alma from ExLibris, an Alma API key with read permissions for the Analytics API and an appropriate Analytics report (see comments for "path" config in config file for more information)
 
 ## Installation
 
@@ -75,7 +76,7 @@ This Python script is intended to work with Alma (ExLibris) to notify users that
 ## Run the script once daily
 
 1. Use a cronjob that runs the script once daily.
-   > **Warning**
+   > **Warning**\
    > If the cron job runs multiple time per day, the users that are about to expire will receive multiple e-mails. Therefore it is recommended to run the job only once a day.
 
 1. Cronjobs can be run for a specific user or from the systems `/etc/crontab` file. Choose which way is the most appropriate for you.
@@ -86,5 +87,5 @@ This Python script is intended to work with Alma (ExLibris) to notify users that
    0 6 * * * root $path_to_repo/.venv/bin/python $path_to_repo/notify-expiring-users.py
    ```
 
-   > **Warning**
+   > **Warning**\
    > Make sure that you use the python from your virtual environment!
