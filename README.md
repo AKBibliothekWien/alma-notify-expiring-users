@@ -1,6 +1,6 @@
 # Alma (ExLibris): Notify expiring users
 
-This Python script is intended to work with Alma (ExLibris) to notify users that are about to expire by e-mail.
+This Python script is intended to work with Alma (ExLibris) to notify users by e-mail that are about to expire.
 
 ## Prerequisites
 
@@ -16,19 +16,19 @@ This Python script is intended to work with Alma (ExLibris) to notify users that
 1. Clone the repository
 
    ```bash
-   git clone https://... $path_to_repo
+   git clone https://github.com/AKBibliothekWien/alma-notify-expiring-users.git
    ```
 
 1. Change into the directory of the repository
 
    ```bash
-   cd $path_to_repo
+   cd alma-notify-expiring-users
    ```
 
 1. Create a virtual environment
 
    ```bash
-   python -m venv .venv
+   python3 -m venv .venv
    ```
 
 1. Activate the virtual environment
@@ -59,7 +59,7 @@ This Python script is intended to work with Alma (ExLibris) to notify users that
 1. In the config file, set your test e-mail address to the config `to_email_test`. Every e-mail that would normaly be sent to a user will now be sent to this e-mail address.
 
 1. Run the script and check if everything works as expected:
-   - Within the path of the repository, activate the virtual environment
+   - Within the path of the repository, activate the virtual environment if not already activated.
 
       ```bash
       source .venv/bin/activate
@@ -68,7 +68,7 @@ This Python script is intended to work with Alma (ExLibris) to notify users that
    - Run the script and check your e-mails.
 
      ```bash
-     python3 $path_to_repo/notify-expiring-users.py
+     python notify-expiring-users.py
      ```
 
 1. When testing is finished, comment out the `to_email_test` config or set it to None. Then, the e-mails will be sent to the real users.
